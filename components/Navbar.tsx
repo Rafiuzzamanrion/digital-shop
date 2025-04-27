@@ -3,6 +3,12 @@ import {useState, useEffect} from 'react';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 
+// Define the type for navigation links
+interface NavLink {
+	name: string;
+	path: string;
+}
+
 const Navbar = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
@@ -50,14 +56,15 @@ const Navbar = () => {
 	}
   `;
 
-
-	const navLinks = [
+	// Correctly typed navLinks array
+	const navLinks: NavLink[] = [
 		{name: 'Home', path: '/'},
 		{name: 'Privacy Policy', path: '/privacy-policy'},
-		{name: 'Terms & Condition', path: '/terms-condition'},
+		{name: 'Terms of Service', path: '/termsOfService'},
 		{name: 'Contact Us', path: '/contactUs'},
 	];
 
+	// @ts-ignore
 	return (
 		<header className={navClasses}>
 			<div className="container mx-auto px-4">

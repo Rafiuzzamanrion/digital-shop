@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from "next/image";
+import EnhancedOpeningHours from "@/components/WorkingHour";
 
 const AboutUs = () => {
 	return (
@@ -28,7 +29,7 @@ const AboutUs = () => {
 				<div className={'grid grid-cols-1 md:grid-cols-2 gap-10 px-5 md:px-10 lg:px-20 content-center'}>
 					<div><Image src={'/img.jpg'} alt={'body image'} width={600} height={600}/></div>
 					<div>
-						<h1 className={'text-2xl text-gray-700 font-semibold leading-10'}>
+						<h1 className={'text-xl text-gray-700 font-semibold leading-10 mt-5'}>
 							We are a team of passionate individuals who are dedicated to
 							providing the best digital solutions to our clients. Our
 							team is made up of experts in various fields, including web
@@ -42,24 +43,11 @@ const AboutUs = () => {
 			</div>
 
 			<div>
-				<h1 className={'text-center text-4xl font-bold my-7 text-blue-700 '}>Opening Hours</h1>
-				<div className={'grid grid-cols-1 md:grid-cols-2 gap-10 px-5 md:px-10 lg:px-20 content-center'}>
-					<div>
-						<h1 className={'text-2xl text-gray-700 font-semibold leading-10'}>
-							Monday - Friday: 9:00 AM - 5:00 PM
-						</h1>
+				<main>
+					<div className="py-10 bg-gray-100">
+              <EnhancedOpeningHours showCurrentStatus={true}/>
 					</div>
-					<div>
-						<h1 className={'text-2xl text-gray-700 font-semibold leading-10'}>
-							Saturday - Sunday: Closed
-						</h1>
-					</div>
-					<div>
-						<h1 className={'text-2xl text-gray-700 font-semibold leading-10'}>
-							Holidays: Closed
-						</h1>
-						</div>
-					</div>
+				</main>
 			</div>
 		</div>
 	);

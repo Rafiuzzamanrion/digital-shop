@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 
-// Define the type for navigation links
+
 interface NavLink {
 	name: string;
 	path: string;
@@ -22,17 +22,12 @@ const Navbar = () => {
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
 
-			// Determine scroll direction
 			if (currentScrollY > lastScrollY) {
 				setScrollDirection('down');
 			} else {
 				setScrollDirection('up');
 			}
-
-			// Set scrolled state if we're more than 20px from top
 			setIsScrolled(currentScrollY > 20);
-
-			// Update last scroll position
 			setLastScrollY(currentScrollY);
 		};
 
@@ -43,7 +38,7 @@ const Navbar = () => {
 		};
 	}, [lastScrollY]);
 
-	// Determine nav classes based on scroll state and direction
+
 	const navClasses = `
     fixed top-0 w-full z-50 transition-all duration-300 ease-in-out
     ${isScrolled
@@ -56,7 +51,7 @@ const Navbar = () => {
 	}
   `;
 
-	// Correctly typed navLinks array
+
 	const navLinks: NavLink[] = [
 		{name: 'Home', path: '/'},
 		{name: 'Privacy Policy', path: '/privacy-policy'},
@@ -64,7 +59,7 @@ const Navbar = () => {
 		{name: 'Contact Us', path: '/contactUs'},
 	];
 
-	// @ts-ignore
+
 	return (
 		<header className={navClasses}>
 			<div className="container mx-auto px-4">
@@ -133,10 +128,10 @@ const Navbar = () => {
 					</div>
 				</div>
 
-				{/* Additional content that only shows when navbar is expanded */}
+
 				<div className={`
           overflow-hidden transition-all duration-300 ease-in-out
-          ${(isScrolled && scrollDirection === 'down') ? 'max-h-0 opacity-0' : 'max-h-40 opacity-100 mt-4'}
+          ${(isScrolled && scrollDirection === 'down') ? 'max-h-0 opacity-0' : 'max-h-20 opacity-100 mt-4'}
         `}>
 					<div className="flex items-center justify-between text-sm text-gray-500">
 						<div className="flex items-center gap-4">
@@ -172,18 +167,11 @@ const Navbar = () => {
 									      clipRule="evenodd"/>
 								</svg>
 							</a>
-							<a href="#" className="hover:text-blue-600 transition-colors">
-								<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-									<path
-										d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
-								</svg>
-							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			{/* Mobile menu (hidden by default) */}
 			<div className={`${show ? '' : 'hidden'} md:hidden`}>
 				<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
 					{navLinks.map((link) => (

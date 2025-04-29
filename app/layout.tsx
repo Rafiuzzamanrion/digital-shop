@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Roboto_Mono} from "next/font/google";
+import {Poppins} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
 
-const geistMono = Roboto_Mono({
-  variable: "--font-roboto-mono",
+const geistMono = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: "400"
 });
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <Navbar/>
-        <main className="pt-36">
+        <main className="pt-42">
           {children}
         </main>
       </body>

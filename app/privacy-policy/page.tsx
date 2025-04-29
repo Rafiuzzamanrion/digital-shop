@@ -8,6 +8,7 @@ const Page = () => {
 				<PrivacyPolicy
 					companyName="Digital Services Inc"
 					lastUpdated="2025-04-29"
+					className={'pt-10'}
 				/>
 			</div>
 		</div>

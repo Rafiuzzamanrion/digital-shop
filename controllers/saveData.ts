@@ -1,7 +1,5 @@
 'use server'
 import {revalidatePath} from "next/cache";
-// import { prisma } from '@/lib/prisma';
-import {NextResponse} from "next/server";
 import {PrismaClient} from "@/lib/generated/prisma";
 const prisma = new PrismaClient();
 
@@ -18,11 +16,11 @@ export const saveContactInformation = async (data: FormData) => {
 				address
 			}
 		})
-		return NextResponse.json({ status: "contact created successfully" });
+		return { status: "contact created successfully" };
 	}
 
 	catch (error) {
-		return NextResponse.json({ error: error });
+		return { error: error };
 	}
 	finally {
 		revalidatePath('/adminPanel');

@@ -1,6 +1,5 @@
 'use client'
 import React from 'react';
-import {Button} from "@/components/ui/button"
 import {
 	Card,
 	CardContent,
@@ -11,25 +10,20 @@ import {
 import {Input} from "@/components/ui/input"
 import {Label} from "@/components/ui/label"
 
-import {Loader2} from "lucide-react";
 import {Textarea} from "@/components/ui/textarea";
 import {
 	saveContactInformation, saveSocialLink,
 	saveWebsiteInformation
 } from "@/controllers/saveData";
 import {toast} from "sonner";
+import LoadingButton from "@/components/LoadingButton";
 
 
 const Page = () => {
-	const [loadingContact, setLoadingContact] = React.useState(false);
-	const [loadingSocial, setLoadingSocial] = React.useState(false);
-	const [loadingWebsite, setLoadingWebsite] = React.useState(false);
-
 	const handleContactSubmit = async (formData: FormData) => {
-		setLoadingContact(true);
 		try {
 			const res = await saveContactInformation(formData);
-			if (res.status) {
+			if (res) {
 				console.log('res', res);
 				toast("Success", {
 					description: "Contact information saved successfully",
@@ -44,12 +38,10 @@ const Page = () => {
 				description: "An unexpected error occurred",
 			});
 		} finally {
-			setLoadingContact(false);
 		}
 	};
 
 	const handleSocialSubmit = async (formData: FormData) => {
-		setLoadingSocial(true);
 		try {
 			const res = await saveSocialLink(formData);
 			if (res.status) {
@@ -66,12 +58,10 @@ const Page = () => {
 				description: "An unexpected error occurred",
 			});
 		} finally {
-			setLoadingSocial(false);
 		}
 	};
 
 	const handleWebsiteSubmit = async (formData: FormData) => {
-		setLoadingWebsite(true);
 		try {
 			const res = await saveWebsiteInformation(formData);
 			if (res.status) {
@@ -88,7 +78,6 @@ const Page = () => {
 				description: "An unexpected error occurred",
 			});
 		} finally {
-			setLoadingWebsite(false);
 		}
 	};
 
@@ -106,26 +95,21 @@ const Page = () => {
 							<div className="grid w-full items-center gap-4">
 								<div className="flex flex-col space-y-1.5">
 									<Label htmlFor="contactNumber">Contact Number</Label>
-									<Input id="contactNumber" name={'contactNumber'} type={"number"}
+									<Input required id="contactNumber" name={'contactNumber'} type={"number"}
 									       placeholder="Type your Contact Number"/>
 								</div>
 								<div className="flex flex-col space-y-1.5">
 									<Label htmlFor="email">Email</Label>
-									<Input id="email" name={'email'} type={"email"}
+									<Input required id="email" name={'email'} type={"email"}
 									       placeholder="Type your Email Address"/>
 								</div>
 								<div className="flex flex-col space-y-1.5">
 									<Label htmlFor="address">Address</Label>
-									<Input id="address" name={'address'} type={"text"}
+									<Input required id="address" name={'address'} type={"text"}
 									       placeholder="Type your Address"/>
 								</div>
 							</div>
-							<div className={' flex justify-end mt-5'}>
-								<Button disabled={loadingContact} type={'submit'}>
-									{loadingContact && <Loader2 className="w-4 h-4 mr-2 animate-spin"/>}
-									{loadingContact ? 'Saving' : 'Save'}
-								</Button>
-							</div>
+							<LoadingButton title={'Save'} loadingTitle={'Saving'} width={'w-[100px]'} position={'justify-end'}/>
 						</form>
 					</CardContent>
 				</Card>
@@ -139,26 +123,21 @@ const Page = () => {
 							<div className="grid w-full items-center gap-4">
 								<div className="flex flex-col space-y-1.5">
 									<Label htmlFor="facebookLink">Facebook Link</Label>
-									<Input id="facebookLink" name={'facebookLink'} type={"text"}
+									<Input required id="facebookLink" name={'facebookLink'} type={"text"}
 									       placeholder="Type/Paste Your Facebook Link"/>
 								</div>
 								<div className="flex flex-col space-y-1.5">
 									<Label htmlFor="instagramLink">Instagram Link</Label>
-									<Input id="instagramLink" name={'instagramLink'} type={"text"}
+									<Input required id="instagramLink" name={'instagramLink'} type={"text"}
 									       placeholder="Type/Paste Your Instagram Link"/>
 								</div>
 								<div className="flex flex-col space-y-1.5">
 									<Label htmlFor="whatsAppLink">WhatsApp Link</Label>
-									<Input id="whatsAppLink" name={'whatsAppLink'} type={"text"}
+									<Input required id="whatsAppLink" name={'whatsAppLink'} type={"text"}
 									       placeholder="Type/Paste Your WhatsApp Link"/>
 								</div>
 							</div>
-							<div className={' flex justify-end mt-5'}>
-								<Button disabled={loadingSocial} type={'submit'}>
-									{loadingSocial && <Loader2 className="w-4 h-4 mr-2 animate-spin"/>}
-									{loadingSocial ? 'Saving' : 'Save'}
-								</Button>
-							</div>
+							<LoadingButton title={'Save'} loadingTitle={'Saving'} width={'w-[100px]'} position={'justify-end'}/>
 						</form>
 					</CardContent>
 				</Card>
@@ -172,21 +151,16 @@ const Page = () => {
 							<div className="grid w-full items-center gap-4">
 								<div className="flex flex-col space-y-1.5">
 									<Label htmlFor="websiteName">Website Name</Label>
-									<Input id="websiteName" name={'websiteName'} type={"text"}
+									<Input required id="websiteName" name={'websiteName'} type={"text"}
 									       placeholder="Type your Website Name Here"/>
 								</div>
 								<div className="flex flex-col space-y-1.5">
 									<Label htmlFor="footerDescription">Footer Description</Label>
-									<Textarea id="footerDescription" name={'footerDescription'} rows={7}
+									<Textarea required id="footerDescription" name={'footerDescription'} rows={7}
 									          placeholder="Type your Footer Description here"/>
 								</div>
 							</div>
-							<div className={' flex justify-end mt-5'}>
-								<Button disabled={loadingWebsite} type={'submit'}>
-									{loadingWebsite && <Loader2 className="w-4 h-4 mr-2 animate-spin"/>}
-									{loadingWebsite ? 'Saving' : 'Save'}
-								</Button>
-							</div>
+							<LoadingButton title={'Save'} loadingTitle={'Saving'} width={'w-[100px]'} position={'justify-end'}/>
 						</form>
 					</CardContent>
 				</Card>

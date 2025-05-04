@@ -37,13 +37,13 @@ const EnhancedOpeningHours: React.FC<EnhancedOpeningHoursProps> = ({
 
 	// Regular schedule data
 	const schedule: Schedule[] = [
-		{ day: "Monday", hours: "9:00 AM - 6:00 PM", openTime: "09:00", closeTime: "18:00" },
-		{ day: "Tuesday", hours: "9:00 AM - 6:00 PM", openTime: "09:00", closeTime: "18:00" },
-		{ day: "Wednesday", hours: "9:00 AM - 6:00 PM", openTime: "09:00", closeTime: "18:00" },
-		{ day: "Thursday", hours: "9:00 AM - 6:00 PM", openTime: "09:00", closeTime: "18:00" },
-		{ day: "Friday", hours: "9:00 AM - 7:00 PM", openTime: "09:00", closeTime: "19:00" },
-		{ day: "Saturday", hours: "10:00 AM - 4:00 PM", openTime: "10:00", closeTime: "16:00" },
-		{ day: "Sunday", hours: "Closed", isClosed: true },
+		{ day: "Monday", hours: "12:00 AM - 11:59 PM", openTime: "12:00", closeTime: "23:59" },
+		{ day: "Tuesday", hours: "12:00 AM - 11:59 PM", openTime: "12:00", closeTime: "23:59" },
+		{ day: "Wednesday", hours: "12:00 AM - 11:59 PM", openTime: "12:00", closeTime: "23:59" },
+		{ day: "Thursday", hours: "12:00 AM - 11:59 PM", openTime: "12:00", closeTime: "23:59" },
+		{ day: "Friday", hours: "12:00 AM - 11:59 PM", openTime: "12:00", closeTime: "23:59" },
+		{ day: "Saturday", hours: "12:00 AM - 11:59 PM", openTime: "12:00", closeTime: "23:59" },
+		{ day: "Sunday", hours: "12:00 AM - 11:59 PM", openTime: "12:00", closeTime: "23:59"},
 	];
 
 	// Special days/holidays

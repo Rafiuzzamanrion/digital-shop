@@ -1,4 +1,6 @@
 import React from 'react';
+import {ContactInformation, ContactInformationResponse, ErrorResponse} from "@/types";
+import {getContactInformation} from "@/controllers/getData";
 
 interface PrivacyPolicyProps {
 	companyName: string;
@@ -6,11 +8,14 @@ interface PrivacyPolicyProps {
 	lastUpdated?: string;
 }
 
-const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
+const PrivacyPolicy: React.FC<PrivacyPolicyProps> = async ({
 	                                                     companyName = "",
 	                                                     className = "",
 	                                                     lastUpdated = ""
                                                      }) => {
+	const res: ContactInformationResponse = await getContactInformation();
+	const isError = (res as ErrorResponse)?.error !== undefined;
+	const contactInfo = !isError && res ? (res as ContactInformation) : null;
 	return (
 		<section className={`${className}`}>
 			<div className="container mx-auto px-4 max-w-4xl">
@@ -79,8 +84,8 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
 							<h2 className="text-xl font-semibold text-indigo-800 mb-3">Contact Us</h2>
 							<p className="text-gray-700 leading-relaxed">
 								If you have any questions about our Privacy Policy, please contact us at{" "}
-								<a href="mailto:privacy@example.com" className="text-blue-600 hover:underline">
-									privacy@example.com
+								<a href={`mailto:${contactInfo?.email}`} className="text-blue-600 hover:underline">
+									{contactInfo?.email || ''}
 								</a>
 							</p>
 						</div>

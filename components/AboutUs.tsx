@@ -1,8 +1,13 @@
 import React from 'react';
 import Image from "next/image";
 import EnhancedOpeningHours from "@/components/WorkingHour";
+import {ContactInformation, ContactInformationResponse, ErrorResponse} from "@/types";
+import {getContactInformation} from "@/controllers/getData";
 
-const AboutUs = () => {
+const AboutUs = async () => {
+	const res: ContactInformationResponse = await getContactInformation();
+	const isError = (res as ErrorResponse)?.error !== undefined;
+	const contactInfo = !isError && res ? (res as ContactInformation) : null;
 	return (
 		<div>
 			<div className={'bg-blue-800 text-gray-200 py-10'}>
@@ -20,7 +25,8 @@ const AboutUs = () => {
 						landscape, ensuring that our clients receive the best possible
 						solutions.
 					</p>
-					<h1 className={'text-center text-3xl mt-5 font-semibold'}> <span className={'text-red-700'}>Service Areas:</span> Rice Lake, Barron, Cumberland, Chetek, Cameron, Almena, Dallas</h1>
+					<h1 className={'text-center text-3xl mt-5 font-semibold'}> <span className={'text-red-700'}>
+						Service Areas:</span> {contactInfo?.address}</h1>
 				</div>
 			</div>
 

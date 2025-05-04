@@ -1,9 +1,11 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import {useState, FormEvent, useEffect} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import {ErrorResponse} from "@/types";
+import {ContactInformation, ContactInformationResponse} from "@/types";
+import {getContactInformation} from "@/controllers/getData";
 export default function ContactUs() {
 	const [formData, setFormData] = useState({
 		name: '',
@@ -14,7 +16,7 @@ export default function ContactUs() {
 
 	const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 	const [errors, setErrors] = useState<{[key: string]: string}>({});
-
+  const [contactInfo, setContactInfo] = useState<ContactInformation | null>(null);
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
 		const { name, value } = e.target;
 		setFormData(prev => ({ ...prev, [name]: value }));
@@ -79,7 +81,17 @@ export default function ContactUs() {
 			setFormStatus('error');
 		}
 	};
-
+const getData = async () => {
+	const res: ContactInformationResponse = await getContactInformation();
+	const isError = (res as ErrorResponse)?.error !== undefined;
+	const contactInfo = !isError && res ? (res as ContactInformation) : null;
+	return contactInfo;
+}
+	console.log(contactInfo)
+	useEffect(() => {
+		const contactInformation = getData().then(( data ) => setContactInfo(data));
+		;
+	}, [contactInfo]);
 	return (
 		<main className="bg-gradient-to-b from-blue-50 to-white min-h-screen mt-16 mx-5">
 			{/* Hero Section */}
@@ -233,8 +245,8 @@ export default function ContactUs() {
 									</div>
 									<div>
 										<h3 className="text-lg font-medium text-gray-800 mb-1">Email</h3>
-										<a href="mailto:contact@rafiuzzamanrion.com" className="text-blue-600 hover:underline">
-											contact@rafiuzzamanrion.com
+										<a href={`mailto:${contactInfo?.email}`} className="text-blue-600 hover:underline">
+											{contactInfo?.email}
 										</a>
 										<p className="text-gray-600 mt-1">For general inquiries and support</p>
 									</div>
@@ -249,8 +261,8 @@ export default function ContactUs() {
 									</div>
 									<div>
 										<h3 className="text-lg font-medium text-gray-800 mb-1">Phone</h3>
-										<a href="tel:+11234567890" className="text-blue-600 hover:underline">
-											+1 (123) 456-7890
+										<a href={`${contactInfo?.contactNumber}`} className="text-blue-600 hover:underline">
+											{contactInfo?.contactNumber}
 										</a>
 										<p className="text-gray-600 mt-1">Monday-Friday, 9AM-5PM EST</p>
 									</div>
@@ -267,9 +279,7 @@ export default function ContactUs() {
 									<div>
 										<h3 className="text-lg font-medium text-gray-800 mb-1">Office</h3>
 										<p className="text-gray-600">
-											123 Business Avenue<br />
-											Suite 456<br />
-											Web City, Digital State 12345
+											{contactInfo?.address || '123 Main St, City, State, 12345'}
 										</p>
 									</div>
 								</div>

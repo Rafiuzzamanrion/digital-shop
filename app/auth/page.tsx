@@ -63,7 +63,7 @@ const Auth = () => {
 						<div className="grid w-full items-center gap-4">
 							<div className="flex flex-col space-y-1.5">
 								<Label htmlFor="name">Admin key</Label>
-								<Input id="name" type={"number"} onChange={(e) => handleKeyChange(e)}
+								<Input id="name" type={"password"} onChange={(e) => handleKeyChange(e)}
 								       placeholder="Type your admin key"/>
 							</div>
 						</div>

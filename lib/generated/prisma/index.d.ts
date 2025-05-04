@@ -4200,15 +4200,15 @@ export namespace Prisma {
 
   export type ContactInformationWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    email?: string
     AND?: ContactInformationWhereInput | ContactInformationWhereInput[]
     OR?: ContactInformationWhereInput[]
     NOT?: ContactInformationWhereInput | ContactInformationWhereInput[]
     contactNumber?: StringFilter<"ContactInformation"> | string
+    email?: StringFilter<"ContactInformation"> | string
     address?: StringFilter<"ContactInformation"> | string
     createdAt?: DateTimeFilter<"ContactInformation"> | Date | string
     updatedAt?: DateTimeFilter<"ContactInformation"> | Date | string
-  }, "id" | "email">
+  }, "id">
 
   export type ContactInformationOrderByWithAggregationInput = {
     id?: SortOrder

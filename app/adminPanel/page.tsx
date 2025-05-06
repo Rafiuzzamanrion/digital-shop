@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
 	Card,
 	CardContent,
@@ -12,11 +12,14 @@ import {Label} from "@/components/ui/label"
 
 import {Textarea} from "@/components/ui/textarea";
 import {
+	saveBusinessManagerVerification,
 	saveContactInformation, saveSocialLink,
 	saveWebsiteInformation
 } from "@/controllers/saveData";
 import {toast} from "sonner";
 import LoadingButton from "@/components/LoadingButton";
+import {ErrorResponse, FacebookVerification, FacebookVerificationResponse} from "@/types";
+import {getBusinessManagerData} from "@/controllers/getData";
 
 
 const Page = () => {
@@ -81,10 +84,43 @@ const Page = () => {
 		}
 	};
 
+	const handleFacebookVerificationSubmit = async (formData: FormData) => {
+		console.log('formData', formData);
+		try {
+			const res = await saveBusinessManagerVerification(formData);
+			if (res.status) {
+				toast("Success", {
+					description: "Facebook verification code saved successfully",
+				});
+			} else {
+				toast("Error", {
+					description: "Failed to save Facebook verification code",
+				});
+			}
+		} catch (error) {
+			toast("Error", {
+				description: "An unexpected error occurred",
+			});
+		} finally {
+		}
+	};
+	const [verificationId, setVerificationId] = React.useState<string | null>(null);
+const getData = async () => {
+	const res: FacebookVerificationResponse = await getBusinessManagerData();
+	const isError = (res as ErrorResponse)?.error !== undefined;
+	const facebookVerification = !isError && res ? (res as FacebookVerification) : null;
+	return facebookVerification;
+}
+	useEffect(() => {
+		getData().then((verification) => {
+			setVerificationId(verification?.verificationId || null);
+		})
+	}, []);
 	return (
 		<div className={'min-h-screen my-10'}>
 			<h1 className={'text-5xl text-indigo-800 text-center my-5 font-bold'}>Admin Panel</h1>
-			<div className={'grid md:grid-cols-2 lg:grid-cols-3 gap-10 px-5 md:px-10 place-content-center'}>
+			<div className={'grid md:grid-cols-2 lg:grid-cols-3 gap-10 px-5 md:px-10' +
+				' place-content-center'}>
 				<Card className="w-[350px] mx-auto">
 					<CardHeader>
 						<CardTitle className={'text-center'}>Contact Information</CardTitle>
@@ -163,6 +199,29 @@ const Page = () => {
 							<LoadingButton title={'Save'} loadingTitle={'Saving'} width={'w-[100px]'} position={'justify-end'}/>
 						</form>
 					</CardContent>
+				</Card>
+				<Card className="w-[350px] mx-auto">
+					<CardHeader>
+						<CardTitle className={'text-center'}>Business Manager Verification</CardTitle>
+						<CardDescription>Fill the form with proper information</CardDescription>
+					</CardHeader>
+					<CardContent>
+						<form action={handleFacebookVerificationSubmit}>
+								<div className="flex flex-col space-y-1.5">
+									<Label htmlFor="footerDescription">Verification Code</Label>
+									<Textarea required id="verificationId" name={'verificationId'} rows={7}
+									          placeholder="Type your Verification Code here"/>
+								</div>
+							<LoadingButton title={'Save'} loadingTitle={'Saving'} width={'w-[100px]'} position={'justify-end'}/>
+						</form>
+					</CardContent>
+				</Card>
+
+				<Card className="w-[350px] mx-auto">
+					<CardHeader>
+						<CardTitle className={'text-center mb-3'}>Business Manager Verification Code</CardTitle>
+						<CardDescription>Your Last Business manager Verification code: <span className={'font-bold text-indigo-800'}>{verificationId}</span></CardDescription>
+					</CardHeader>
 				</Card>
 			</div>
 		</div>

@@ -2,7 +2,7 @@
 
 import { PrismaClient } from "@/lib/generated/prisma";
 import {
-	ContactInformationResponse,
+	ContactInformationResponse, FacebookVerificationResponse,
 	SocialLinkResponse,
 	WebsiteInformationResponse
 } from "@/types";
@@ -33,6 +33,15 @@ export const getWebsiteInformation = async () : Promise<WebsiteInformationRespon
 	try {
 		const websiteInformation = await prisma.websiteInformation.findFirst({ orderBy: { createdAt: "desc" } });
 		return websiteInformation;
+	} catch (error) {
+		return { error: error };
+	}
+}
+
+export const getBusinessManagerData = async () : Promise<FacebookVerificationResponse> => {
+	try {
+		const facebookVerificationId = await prisma.facebookVerification.findFirst({ orderBy: { createdAt: "desc" } });
+		return facebookVerificationId;
 	} catch (error) {
 		return { error: error };
 	}

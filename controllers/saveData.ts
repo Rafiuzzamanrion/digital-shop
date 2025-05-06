@@ -75,3 +75,23 @@ export const saveSocialLink = async (data: FormData) => {
 		revalidatePath('/adminPanel');
 	}
 	}
+	export const saveBusinessManagerVerification = async (data: FormData) => {
+	const verificationId = data.get('verificationId') as string;
+
+	try {
+		await prisma.facebookVerification.create({
+			data: {
+		     verificationId
+			}
+		})
+		return { status: "verification created successfully" };
+	}
+
+
+	catch (error) {
+		return { error: error };
+	}
+	finally {
+		revalidatePath('/adminPanel');
+	}
+	}

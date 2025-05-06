@@ -28,6 +28,11 @@ export type SocialLink = $Result.DefaultSelection<Prisma.$SocialLinkPayload>
  * 
  */
 export type WebsiteInformation = $Result.DefaultSelection<Prisma.$WebsiteInformationPayload>
+/**
+ * Model FacebookVerification
+ * 
+ */
+export type FacebookVerification = $Result.DefaultSelection<Prisma.$FacebookVerificationPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +188,16 @@ export class PrismaClient<
     * ```
     */
   get websiteInformation(): Prisma.WebsiteInformationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.facebookVerification`: Exposes CRUD operations for the **FacebookVerification** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FacebookVerifications
+    * const facebookVerifications = await prisma.facebookVerification.findMany()
+    * ```
+    */
+  get facebookVerification(): Prisma.FacebookVerificationDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +640,8 @@ export namespace Prisma {
   export const ModelName: {
     ContactInformation: 'ContactInformation',
     SocialLink: 'SocialLink',
-    WebsiteInformation: 'WebsiteInformation'
+    WebsiteInformation: 'WebsiteInformation',
+    FacebookVerification: 'FacebookVerification'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "contactInformation" | "socialLink" | "websiteInformation"
+      modelProps: "contactInformation" | "socialLink" | "websiteInformation" | "facebookVerification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +886,80 @@ export namespace Prisma {
           }
         }
       }
+      FacebookVerification: {
+        payload: Prisma.$FacebookVerificationPayload<ExtArgs>
+        fields: Prisma.FacebookVerificationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FacebookVerificationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FacebookVerificationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload>
+          }
+          findFirst: {
+            args: Prisma.FacebookVerificationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FacebookVerificationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload>
+          }
+          findMany: {
+            args: Prisma.FacebookVerificationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload>[]
+          }
+          create: {
+            args: Prisma.FacebookVerificationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload>
+          }
+          createMany: {
+            args: Prisma.FacebookVerificationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FacebookVerificationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload>[]
+          }
+          delete: {
+            args: Prisma.FacebookVerificationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload>
+          }
+          update: {
+            args: Prisma.FacebookVerificationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload>
+          }
+          deleteMany: {
+            args: Prisma.FacebookVerificationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FacebookVerificationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FacebookVerificationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload>[]
+          }
+          upsert: {
+            args: Prisma.FacebookVerificationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacebookVerificationPayload>
+          }
+          aggregate: {
+            args: Prisma.FacebookVerificationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFacebookVerification>
+          }
+          groupBy: {
+            args: Prisma.FacebookVerificationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FacebookVerificationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FacebookVerificationCountArgs<ExtArgs>
+            result: $Utils.Optional<FacebookVerificationCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1047,7 @@ export namespace Prisma {
     contactInformation?: ContactInformationOmit
     socialLink?: SocialLinkOmit
     websiteInformation?: WebsiteInformationOmit
+    facebookVerification?: FacebookVerificationOmit
   }
 
   /* Types for Logging */
@@ -4063,6 +4154,988 @@ export namespace Prisma {
 
 
   /**
+   * Model FacebookVerification
+   */
+
+  export type AggregateFacebookVerification = {
+    _count: FacebookVerificationCountAggregateOutputType | null
+    _min: FacebookVerificationMinAggregateOutputType | null
+    _max: FacebookVerificationMaxAggregateOutputType | null
+  }
+
+  export type FacebookVerificationMinAggregateOutputType = {
+    id: string | null
+    verificationId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FacebookVerificationMaxAggregateOutputType = {
+    id: string | null
+    verificationId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FacebookVerificationCountAggregateOutputType = {
+    id: number
+    verificationId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type FacebookVerificationMinAggregateInputType = {
+    id?: true
+    verificationId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FacebookVerificationMaxAggregateInputType = {
+    id?: true
+    verificationId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FacebookVerificationCountAggregateInputType = {
+    id?: true
+    verificationId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type FacebookVerificationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FacebookVerification to aggregate.
+     */
+    where?: FacebookVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FacebookVerifications to fetch.
+     */
+    orderBy?: FacebookVerificationOrderByWithRelationInput | FacebookVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FacebookVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FacebookVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FacebookVerifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FacebookVerifications
+    **/
+    _count?: true | FacebookVerificationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FacebookVerificationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FacebookVerificationMaxAggregateInputType
+  }
+
+  export type GetFacebookVerificationAggregateType<T extends FacebookVerificationAggregateArgs> = {
+        [P in keyof T & keyof AggregateFacebookVerification]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFacebookVerification[P]>
+      : GetScalarType<T[P], AggregateFacebookVerification[P]>
+  }
+
+
+
+
+  export type FacebookVerificationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacebookVerificationWhereInput
+    orderBy?: FacebookVerificationOrderByWithAggregationInput | FacebookVerificationOrderByWithAggregationInput[]
+    by: FacebookVerificationScalarFieldEnum[] | FacebookVerificationScalarFieldEnum
+    having?: FacebookVerificationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FacebookVerificationCountAggregateInputType | true
+    _min?: FacebookVerificationMinAggregateInputType
+    _max?: FacebookVerificationMaxAggregateInputType
+  }
+
+  export type FacebookVerificationGroupByOutputType = {
+    id: string
+    verificationId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: FacebookVerificationCountAggregateOutputType | null
+    _min: FacebookVerificationMinAggregateOutputType | null
+    _max: FacebookVerificationMaxAggregateOutputType | null
+  }
+
+  type GetFacebookVerificationGroupByPayload<T extends FacebookVerificationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FacebookVerificationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FacebookVerificationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FacebookVerificationGroupByOutputType[P]>
+            : GetScalarType<T[P], FacebookVerificationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FacebookVerificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    verificationId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["facebookVerification"]>
+
+  export type FacebookVerificationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    verificationId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["facebookVerification"]>
+
+  export type FacebookVerificationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    verificationId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["facebookVerification"]>
+
+  export type FacebookVerificationSelectScalar = {
+    id?: boolean
+    verificationId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type FacebookVerificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "verificationId" | "createdAt" | "updatedAt", ExtArgs["result"]["facebookVerification"]>
+
+  export type $FacebookVerificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FacebookVerification"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      verificationId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["facebookVerification"]>
+    composites: {}
+  }
+
+  type FacebookVerificationGetPayload<S extends boolean | null | undefined | FacebookVerificationDefaultArgs> = $Result.GetResult<Prisma.$FacebookVerificationPayload, S>
+
+  type FacebookVerificationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FacebookVerificationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FacebookVerificationCountAggregateInputType | true
+    }
+
+  export interface FacebookVerificationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FacebookVerification'], meta: { name: 'FacebookVerification' } }
+    /**
+     * Find zero or one FacebookVerification that matches the filter.
+     * @param {FacebookVerificationFindUniqueArgs} args - Arguments to find a FacebookVerification
+     * @example
+     * // Get one FacebookVerification
+     * const facebookVerification = await prisma.facebookVerification.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FacebookVerificationFindUniqueArgs>(args: SelectSubset<T, FacebookVerificationFindUniqueArgs<ExtArgs>>): Prisma__FacebookVerificationClient<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FacebookVerification that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FacebookVerificationFindUniqueOrThrowArgs} args - Arguments to find a FacebookVerification
+     * @example
+     * // Get one FacebookVerification
+     * const facebookVerification = await prisma.facebookVerification.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FacebookVerificationFindUniqueOrThrowArgs>(args: SelectSubset<T, FacebookVerificationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FacebookVerificationClient<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FacebookVerification that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacebookVerificationFindFirstArgs} args - Arguments to find a FacebookVerification
+     * @example
+     * // Get one FacebookVerification
+     * const facebookVerification = await prisma.facebookVerification.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FacebookVerificationFindFirstArgs>(args?: SelectSubset<T, FacebookVerificationFindFirstArgs<ExtArgs>>): Prisma__FacebookVerificationClient<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FacebookVerification that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacebookVerificationFindFirstOrThrowArgs} args - Arguments to find a FacebookVerification
+     * @example
+     * // Get one FacebookVerification
+     * const facebookVerification = await prisma.facebookVerification.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FacebookVerificationFindFirstOrThrowArgs>(args?: SelectSubset<T, FacebookVerificationFindFirstOrThrowArgs<ExtArgs>>): Prisma__FacebookVerificationClient<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FacebookVerifications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacebookVerificationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FacebookVerifications
+     * const facebookVerifications = await prisma.facebookVerification.findMany()
+     * 
+     * // Get first 10 FacebookVerifications
+     * const facebookVerifications = await prisma.facebookVerification.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const facebookVerificationWithIdOnly = await prisma.facebookVerification.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FacebookVerificationFindManyArgs>(args?: SelectSubset<T, FacebookVerificationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FacebookVerification.
+     * @param {FacebookVerificationCreateArgs} args - Arguments to create a FacebookVerification.
+     * @example
+     * // Create one FacebookVerification
+     * const FacebookVerification = await prisma.facebookVerification.create({
+     *   data: {
+     *     // ... data to create a FacebookVerification
+     *   }
+     * })
+     * 
+     */
+    create<T extends FacebookVerificationCreateArgs>(args: SelectSubset<T, FacebookVerificationCreateArgs<ExtArgs>>): Prisma__FacebookVerificationClient<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FacebookVerifications.
+     * @param {FacebookVerificationCreateManyArgs} args - Arguments to create many FacebookVerifications.
+     * @example
+     * // Create many FacebookVerifications
+     * const facebookVerification = await prisma.facebookVerification.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FacebookVerificationCreateManyArgs>(args?: SelectSubset<T, FacebookVerificationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FacebookVerifications and returns the data saved in the database.
+     * @param {FacebookVerificationCreateManyAndReturnArgs} args - Arguments to create many FacebookVerifications.
+     * @example
+     * // Create many FacebookVerifications
+     * const facebookVerification = await prisma.facebookVerification.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FacebookVerifications and only return the `id`
+     * const facebookVerificationWithIdOnly = await prisma.facebookVerification.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FacebookVerificationCreateManyAndReturnArgs>(args?: SelectSubset<T, FacebookVerificationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FacebookVerification.
+     * @param {FacebookVerificationDeleteArgs} args - Arguments to delete one FacebookVerification.
+     * @example
+     * // Delete one FacebookVerification
+     * const FacebookVerification = await prisma.facebookVerification.delete({
+     *   where: {
+     *     // ... filter to delete one FacebookVerification
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FacebookVerificationDeleteArgs>(args: SelectSubset<T, FacebookVerificationDeleteArgs<ExtArgs>>): Prisma__FacebookVerificationClient<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FacebookVerification.
+     * @param {FacebookVerificationUpdateArgs} args - Arguments to update one FacebookVerification.
+     * @example
+     * // Update one FacebookVerification
+     * const facebookVerification = await prisma.facebookVerification.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FacebookVerificationUpdateArgs>(args: SelectSubset<T, FacebookVerificationUpdateArgs<ExtArgs>>): Prisma__FacebookVerificationClient<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FacebookVerifications.
+     * @param {FacebookVerificationDeleteManyArgs} args - Arguments to filter FacebookVerifications to delete.
+     * @example
+     * // Delete a few FacebookVerifications
+     * const { count } = await prisma.facebookVerification.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FacebookVerificationDeleteManyArgs>(args?: SelectSubset<T, FacebookVerificationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FacebookVerifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacebookVerificationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FacebookVerifications
+     * const facebookVerification = await prisma.facebookVerification.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FacebookVerificationUpdateManyArgs>(args: SelectSubset<T, FacebookVerificationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FacebookVerifications and returns the data updated in the database.
+     * @param {FacebookVerificationUpdateManyAndReturnArgs} args - Arguments to update many FacebookVerifications.
+     * @example
+     * // Update many FacebookVerifications
+     * const facebookVerification = await prisma.facebookVerification.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FacebookVerifications and only return the `id`
+     * const facebookVerificationWithIdOnly = await prisma.facebookVerification.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FacebookVerificationUpdateManyAndReturnArgs>(args: SelectSubset<T, FacebookVerificationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FacebookVerification.
+     * @param {FacebookVerificationUpsertArgs} args - Arguments to update or create a FacebookVerification.
+     * @example
+     * // Update or create a FacebookVerification
+     * const facebookVerification = await prisma.facebookVerification.upsert({
+     *   create: {
+     *     // ... data to create a FacebookVerification
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FacebookVerification we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FacebookVerificationUpsertArgs>(args: SelectSubset<T, FacebookVerificationUpsertArgs<ExtArgs>>): Prisma__FacebookVerificationClient<$Result.GetResult<Prisma.$FacebookVerificationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FacebookVerifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacebookVerificationCountArgs} args - Arguments to filter FacebookVerifications to count.
+     * @example
+     * // Count the number of FacebookVerifications
+     * const count = await prisma.facebookVerification.count({
+     *   where: {
+     *     // ... the filter for the FacebookVerifications we want to count
+     *   }
+     * })
+    **/
+    count<T extends FacebookVerificationCountArgs>(
+      args?: Subset<T, FacebookVerificationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FacebookVerificationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FacebookVerification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacebookVerificationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FacebookVerificationAggregateArgs>(args: Subset<T, FacebookVerificationAggregateArgs>): Prisma.PrismaPromise<GetFacebookVerificationAggregateType<T>>
+
+    /**
+     * Group by FacebookVerification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacebookVerificationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FacebookVerificationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FacebookVerificationGroupByArgs['orderBy'] }
+        : { orderBy?: FacebookVerificationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FacebookVerificationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFacebookVerificationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FacebookVerification model
+   */
+  readonly fields: FacebookVerificationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FacebookVerification.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FacebookVerificationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FacebookVerification model
+   */
+  interface FacebookVerificationFieldRefs {
+    readonly id: FieldRef<"FacebookVerification", 'String'>
+    readonly verificationId: FieldRef<"FacebookVerification", 'String'>
+    readonly createdAt: FieldRef<"FacebookVerification", 'DateTime'>
+    readonly updatedAt: FieldRef<"FacebookVerification", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FacebookVerification findUnique
+   */
+  export type FacebookVerificationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * Filter, which FacebookVerification to fetch.
+     */
+    where: FacebookVerificationWhereUniqueInput
+  }
+
+  /**
+   * FacebookVerification findUniqueOrThrow
+   */
+  export type FacebookVerificationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * Filter, which FacebookVerification to fetch.
+     */
+    where: FacebookVerificationWhereUniqueInput
+  }
+
+  /**
+   * FacebookVerification findFirst
+   */
+  export type FacebookVerificationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * Filter, which FacebookVerification to fetch.
+     */
+    where?: FacebookVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FacebookVerifications to fetch.
+     */
+    orderBy?: FacebookVerificationOrderByWithRelationInput | FacebookVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FacebookVerifications.
+     */
+    cursor?: FacebookVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FacebookVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FacebookVerifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FacebookVerifications.
+     */
+    distinct?: FacebookVerificationScalarFieldEnum | FacebookVerificationScalarFieldEnum[]
+  }
+
+  /**
+   * FacebookVerification findFirstOrThrow
+   */
+  export type FacebookVerificationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * Filter, which FacebookVerification to fetch.
+     */
+    where?: FacebookVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FacebookVerifications to fetch.
+     */
+    orderBy?: FacebookVerificationOrderByWithRelationInput | FacebookVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FacebookVerifications.
+     */
+    cursor?: FacebookVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FacebookVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FacebookVerifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FacebookVerifications.
+     */
+    distinct?: FacebookVerificationScalarFieldEnum | FacebookVerificationScalarFieldEnum[]
+  }
+
+  /**
+   * FacebookVerification findMany
+   */
+  export type FacebookVerificationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * Filter, which FacebookVerifications to fetch.
+     */
+    where?: FacebookVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FacebookVerifications to fetch.
+     */
+    orderBy?: FacebookVerificationOrderByWithRelationInput | FacebookVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FacebookVerifications.
+     */
+    cursor?: FacebookVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FacebookVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FacebookVerifications.
+     */
+    skip?: number
+    distinct?: FacebookVerificationScalarFieldEnum | FacebookVerificationScalarFieldEnum[]
+  }
+
+  /**
+   * FacebookVerification create
+   */
+  export type FacebookVerificationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * The data needed to create a FacebookVerification.
+     */
+    data: XOR<FacebookVerificationCreateInput, FacebookVerificationUncheckedCreateInput>
+  }
+
+  /**
+   * FacebookVerification createMany
+   */
+  export type FacebookVerificationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FacebookVerifications.
+     */
+    data: FacebookVerificationCreateManyInput | FacebookVerificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FacebookVerification createManyAndReturn
+   */
+  export type FacebookVerificationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * The data used to create many FacebookVerifications.
+     */
+    data: FacebookVerificationCreateManyInput | FacebookVerificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FacebookVerification update
+   */
+  export type FacebookVerificationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * The data needed to update a FacebookVerification.
+     */
+    data: XOR<FacebookVerificationUpdateInput, FacebookVerificationUncheckedUpdateInput>
+    /**
+     * Choose, which FacebookVerification to update.
+     */
+    where: FacebookVerificationWhereUniqueInput
+  }
+
+  /**
+   * FacebookVerification updateMany
+   */
+  export type FacebookVerificationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FacebookVerifications.
+     */
+    data: XOR<FacebookVerificationUpdateManyMutationInput, FacebookVerificationUncheckedUpdateManyInput>
+    /**
+     * Filter which FacebookVerifications to update
+     */
+    where?: FacebookVerificationWhereInput
+    /**
+     * Limit how many FacebookVerifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FacebookVerification updateManyAndReturn
+   */
+  export type FacebookVerificationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * The data used to update FacebookVerifications.
+     */
+    data: XOR<FacebookVerificationUpdateManyMutationInput, FacebookVerificationUncheckedUpdateManyInput>
+    /**
+     * Filter which FacebookVerifications to update
+     */
+    where?: FacebookVerificationWhereInput
+    /**
+     * Limit how many FacebookVerifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FacebookVerification upsert
+   */
+  export type FacebookVerificationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * The filter to search for the FacebookVerification to update in case it exists.
+     */
+    where: FacebookVerificationWhereUniqueInput
+    /**
+     * In case the FacebookVerification found by the `where` argument doesn't exist, create a new FacebookVerification with this data.
+     */
+    create: XOR<FacebookVerificationCreateInput, FacebookVerificationUncheckedCreateInput>
+    /**
+     * In case the FacebookVerification was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FacebookVerificationUpdateInput, FacebookVerificationUncheckedUpdateInput>
+  }
+
+  /**
+   * FacebookVerification delete
+   */
+  export type FacebookVerificationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+    /**
+     * Filter which FacebookVerification to delete.
+     */
+    where: FacebookVerificationWhereUniqueInput
+  }
+
+  /**
+   * FacebookVerification deleteMany
+   */
+  export type FacebookVerificationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FacebookVerifications to delete
+     */
+    where?: FacebookVerificationWhereInput
+    /**
+     * Limit how many FacebookVerifications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FacebookVerification without action
+   */
+  export type FacebookVerificationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacebookVerification
+     */
+    select?: FacebookVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacebookVerification
+     */
+    omit?: FacebookVerificationOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4109,6 +5182,16 @@ export namespace Prisma {
   };
 
   export type WebsiteInformationScalarFieldEnum = (typeof WebsiteInformationScalarFieldEnum)[keyof typeof WebsiteInformationScalarFieldEnum]
+
+
+  export const FacebookVerificationScalarFieldEnum: {
+    id: 'id',
+    verificationId: 'verificationId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type FacebookVerificationScalarFieldEnum = (typeof FacebookVerificationScalarFieldEnum)[keyof typeof FacebookVerificationScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4343,6 +5426,53 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"WebsiteInformation"> | Date | string
   }
 
+  export type FacebookVerificationWhereInput = {
+    AND?: FacebookVerificationWhereInput | FacebookVerificationWhereInput[]
+    OR?: FacebookVerificationWhereInput[]
+    NOT?: FacebookVerificationWhereInput | FacebookVerificationWhereInput[]
+    id?: StringFilter<"FacebookVerification"> | string
+    verificationId?: StringFilter<"FacebookVerification"> | string
+    createdAt?: DateTimeFilter<"FacebookVerification"> | Date | string
+    updatedAt?: DateTimeFilter<"FacebookVerification"> | Date | string
+  }
+
+  export type FacebookVerificationOrderByWithRelationInput = {
+    id?: SortOrder
+    verificationId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FacebookVerificationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: FacebookVerificationWhereInput | FacebookVerificationWhereInput[]
+    OR?: FacebookVerificationWhereInput[]
+    NOT?: FacebookVerificationWhereInput | FacebookVerificationWhereInput[]
+    verificationId?: StringFilter<"FacebookVerification"> | string
+    createdAt?: DateTimeFilter<"FacebookVerification"> | Date | string
+    updatedAt?: DateTimeFilter<"FacebookVerification"> | Date | string
+  }, "id">
+
+  export type FacebookVerificationOrderByWithAggregationInput = {
+    id?: SortOrder
+    verificationId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: FacebookVerificationCountOrderByAggregateInput
+    _max?: FacebookVerificationMaxOrderByAggregateInput
+    _min?: FacebookVerificationMinOrderByAggregateInput
+  }
+
+  export type FacebookVerificationScalarWhereWithAggregatesInput = {
+    AND?: FacebookVerificationScalarWhereWithAggregatesInput | FacebookVerificationScalarWhereWithAggregatesInput[]
+    OR?: FacebookVerificationScalarWhereWithAggregatesInput[]
+    NOT?: FacebookVerificationScalarWhereWithAggregatesInput | FacebookVerificationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"FacebookVerification"> | string
+    verificationId?: StringWithAggregatesFilter<"FacebookVerification"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"FacebookVerification"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FacebookVerification"> | Date | string
+  }
+
   export type ContactInformationCreateInput = {
     id?: string
     contactNumber: string
@@ -4525,6 +5655,55 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type FacebookVerificationCreateInput = {
+    id?: string
+    verificationId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacebookVerificationUncheckedCreateInput = {
+    id?: string
+    verificationId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacebookVerificationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    verificationId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacebookVerificationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    verificationId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacebookVerificationCreateManyInput = {
+    id?: string
+    verificationId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacebookVerificationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    verificationId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacebookVerificationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    verificationId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -4657,6 +5836,27 @@ export namespace Prisma {
     id?: SortOrder
     websiteName?: SortOrder
     footerDescription?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FacebookVerificationCountOrderByAggregateInput = {
+    id?: SortOrder
+    verificationId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FacebookVerificationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    verificationId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FacebookVerificationMinOrderByAggregateInput = {
+    id?: SortOrder
+    verificationId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }

@@ -19,7 +19,7 @@ const Page = async () => {
 		<div>
 			<main className="bg-gray-50 min-h-screen py-10">
 				<DetailedTermsOfService
-					companyName={websiteInfo?.websiteName}
+					companyName={websiteInfo?.websiteName || "Your Company Name"}
 					className=""
 					lastUpdated="2025-04-29"
 					contactEmail={contactInfo?.email}

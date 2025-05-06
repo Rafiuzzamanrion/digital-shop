@@ -129,6 +129,8 @@ const Footer: React.FC = async () => {
 					<p className="text-gray-500 text-sm">
 						<Link href={'/auth'}>©</Link> {new Date().getFullYear()} {websiteInfo?.websiteName || 'Digital Services'}. All rights reserved.
 					</p>
+					<h1 className={'mt-3'}>Developed by: <Link className={'text-teal-600' +
+						' font-bold hover:underline'} href={'https://www.rafiuzzamanrion.me'} target={'_blank'}> Rafiuzzaman Rion </Link> </h1>
 				</div>
 			</div>
 		</footer>

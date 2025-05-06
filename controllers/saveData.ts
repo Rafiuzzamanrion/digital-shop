@@ -26,7 +26,6 @@ export const saveContactInformation = async (data: FormData) => {
 		revalidatePath('/adminPanel');
 	}
 }
-
 export const saveSocialLink = async (data: FormData) => {
 	const facebookLink = data.get('facebookLink') as string;
 	const instagramLink = data.get('instagramLink') as string;
@@ -43,7 +42,6 @@ export const saveSocialLink = async (data: FormData) => {
 		})
 		return { status: "link created successfully" };
 	}
-
 
 	catch (error) {
 		return { error: error };

@@ -88,6 +88,11 @@ const Footer: React.FC = async () => {
 									📞 {contactInfo?.contactNumber || 'Phone unavailable'}
 								</a>
 							</li>
+							<li>
+								<a href={`tel:${contactInfo?.contactNumber || '+1234567890'}`} className="hover:text-blue-400 transition-colors font-semibold">
+								TIN: <span className={'text-indigo-600'}>767520992761</span>
+								</a>
+							</li>
 						</ul>
 					</div>
 

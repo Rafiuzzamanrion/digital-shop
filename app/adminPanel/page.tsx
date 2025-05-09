@@ -85,7 +85,7 @@ const Page = () => {
 	};
 
 	const handleFacebookVerificationSubmit = async (formData: FormData) => {
-		console.log('formData', formData);
+
 		try {
 			const res = await saveBusinessManagerVerification(formData);
 			if (res.status) {

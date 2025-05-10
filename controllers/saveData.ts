@@ -26,6 +26,11 @@ export const saveContactInformation = async (data: FormData) => {
 	}
 	finally {
 		revalidatePath('/adminPanel');
+		revalidatePath('/')
+		revalidatePath('/termsOfService')
+		revalidatePath('/privacyPolicy')
+		revalidatePath('/aboutUs')
+		revalidatePath('/contactUs')
 	}
 }
 export const saveSocialLink = async (data: FormData) => {
@@ -50,6 +55,11 @@ export const saveSocialLink = async (data: FormData) => {
 	}
 	finally {
 		revalidatePath('/adminPanel');
+		revalidatePath('/')
+		revalidatePath('/termsOfService')
+		revalidatePath('/privacyPolicy')
+		revalidatePath('/aboutUs')
+		revalidatePath('/contactUs')
 	}
 	}
 	export const saveWebsiteInformation = async (data: FormData) => {
@@ -93,5 +103,10 @@ export const saveSocialLink = async (data: FormData) => {
 	}
 	finally {
 		revalidatePath('/adminPanel');
+		revalidatePath('/')
+		revalidatePath('/termsOfService')
+		revalidatePath('/privacyPolicy')
+		revalidatePath('/aboutUs')
+		revalidatePath('/contactUs')
 	}
 	}

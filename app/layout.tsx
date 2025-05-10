@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description: "All your digital needs in one place",
     verification: {
       other: {
-        'facebook-domain-verification':'az6qhj8rxbtsc102ijnfjw3umvqop7',
+        'facebook-domain-verification': 'iajahhze566w6i358dlkjdvw0p3mv0',
       },
     },
     robots: {

@@ -27,9 +27,6 @@ const poppins = Poppins({
 
 
 export async function generateMetadata(): Promise<Metadata> {
-  const res: FacebookVerificationResponse = await getBusinessManagerData();
-  const isError = (res as ErrorResponse)?.error !== undefined;
-  const facebookVerification = !isError && res ? (res as FacebookVerification) : null;
 
   return {
     title: "Digital Service",

@@ -1,13 +1,19 @@
 'use server'
 
-import { PrismaClient } from "@/lib/generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import {
 	ContactInformationResponse, FacebookVerificationResponse,
 	SocialLinkResponse,
 	WebsiteInformationResponse
 } from "@/types";
+// Suppress ESLint no-var rule for declare global
+/* eslint-disable no-var */
+declare global {
+	var prisma: PrismaClient | undefined;
+}
 
-const prisma = new PrismaClient();
+const prisma = global.prisma || new PrismaClient();
+if (process.env.NODE_ENV !== "production") global.prisma = prisma;
 
 export const getContactInformation = async (): Promise<ContactInformationResponse> => {
 	try {

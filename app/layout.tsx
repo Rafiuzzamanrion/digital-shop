@@ -4,16 +4,13 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {
-  getBusinessManagerData,
   getContactInformation,
   getSocialLink,
   getWebsiteInformation
 } from "@/controllers/getData";
 import {
   ContactInformationResponse,
-  ErrorResponse,
-  FacebookVerification,
-  FacebookVerificationResponse,
+
   SocialLinkResponse,
   WebsiteInformationResponse
 } from "@/types";

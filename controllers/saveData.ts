@@ -83,6 +83,11 @@ export const saveSocialLink = async (data: FormData) => {
 	}
 	finally {
 		revalidatePath('/adminPanel');
+		revalidatePath('/')
+		revalidatePath('/termsOfService')
+		revalidatePath('/privacy-policy')
+		revalidatePath('/aboutUs')
+		revalidatePath('/contactUs')
 	}
 	}
 	export const saveBusinessManagerVerification = async (data: FormData) => {

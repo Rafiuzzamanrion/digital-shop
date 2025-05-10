@@ -7,13 +7,7 @@ import {
 	WebsiteInformationResponse
 } from "@/types";
 
-// Suppress ESLint no-var rule for declare global
-/* eslint-disable no-var */
-declare global {
-	var prisma: PrismaClient | undefined;
-}
-
-const prisma = global.prisma || new PrismaClient()
+const prisma = new PrismaClient();
 
 export const getContactInformation = async (): Promise<ContactInformationResponse> => {
 	try {

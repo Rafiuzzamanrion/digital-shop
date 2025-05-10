@@ -1,13 +1,9 @@
 'use server'
-import {PrismaClient} from "@/lib/generated/prisma";
+import { PrismaClient } from "@/lib/generated/prisma";
 import {revalidatePath} from "next/cache";
-// Suppress ESLint no-var rule for declare global
-/* eslint-disable no-var */
-declare global {
-	var prisma: PrismaClient | undefined;
-}
 
-const prisma = global.prisma || new PrismaClient();
+
+const prisma = new PrismaClient();
 
 export const saveContactInformation = async (data: FormData) => {
 	const contactNumber = data.get('contactNumber') as string;

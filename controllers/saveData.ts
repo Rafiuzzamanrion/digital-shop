@@ -9,7 +9,7 @@ export const saveContactInformation = async (data: FormData) => {
 	const contactNumber = data.get('contactNumber') as string;
 	const email = data.get('email') as string;
 	const address = data.get('address') as string;
-	console.log('data', data);
+
 	try {
 		await prisma.contactInformation.create({
 			data:{

@@ -8,7 +8,7 @@ declare global {
 }
 
 const prisma = global.prisma || new PrismaClient();
-if (process.env.NODE_ENV !== "production") global.prisma = prisma;;
+if (process.env.NODE_ENV !== "production") global.prisma = prisma;
 
 export const saveContactInformation = async (data: FormData) => {
 	const contactNumber = data.get('contactNumber') as string;

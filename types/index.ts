@@ -27,6 +27,12 @@ export interface FacebookVerification {
 	createdAt: string | Date
 	updatedAt: string | Date
 }
+export interface Tin {
+	id: string
+	tin: string
+	createdAt: string | Date
+	updatedAt: string | Date
+}
 export interface ErrorResponse {
 	error: unknown;
 }
@@ -36,3 +42,4 @@ export type ContactInformationResponse = ContactInformation | null | ErrorRespon
 export type SocialLinkResponse = SocialLink | null | ErrorResponse;
 export type WebsiteInformationResponse = WebsiteInformation | null | ErrorResponse;
 export type FacebookVerificationResponse = FacebookVerification | null | ErrorResponse;
+export type TinResponse = Tin | null | ErrorResponse;

@@ -13,7 +13,7 @@ import {Label} from "@/components/ui/label"
 import {Textarea} from "@/components/ui/textarea";
 import {
 	saveBusinessManagerVerification,
-	saveContactInformation, saveSocialLink,
+	saveContactInformation, saveSocialLink, saveTin,
 	saveWebsiteInformation
 } from "@/controllers/saveData";
 import {toast} from "sonner";
@@ -95,6 +95,26 @@ const Page = () => {
 			} else {
 				toast("Error", {
 					description: "Failed to save Facebook verification code",
+				});
+			}
+		} catch (error) {
+			toast("Error", {
+				description: "An unexpected error occurred",
+			});
+		} finally {
+		}
+	};
+	const handleTinSubmit = async (formData: FormData) => {
+
+		try {
+			const res = await saveTin(formData);
+			if (res.status) {
+				toast("Success", {
+					description: "Tin verification code saved successfully",
+				});
+			} else {
+				toast("Error", {
+					description: "Failed to save Tin verification code",
 				});
 			}
 		} catch (error) {
@@ -216,13 +236,26 @@ const getData = async () => {
 						</form>
 					</CardContent>
 				</Card>
-
 				<Card className="w-[350px] mx-auto">
 					<CardHeader>
-						<CardTitle className={'text-center mb-3'}>Business Manager Verification Code</CardTitle>
-						<CardDescription>Your Last Business manager Verification code: <span className={'font-bold text-indigo-800'}>{verificationId}</span></CardDescription>
+						<CardTitle className={'text-center'}>
+							Tin Number
+						</CardTitle>
+						<CardDescription>Fill the form with proper information</CardDescription>
 					</CardHeader>
+					<CardContent>
+						<form action={handleTinSubmit}>
+							<div className="flex flex-col space-y-1.5">
+								<Label htmlFor="facebookLink">Tin</Label>
+								<Input required id="tin" name={'tin'} type={"text"}
+								       placeholder="Type/Paste Your Tin"/>
+							</div>
+							<LoadingButton title={'Save'} loadingTitle={'Saving'} width={'w-[100px]'} position={'justify-end'}/>
+						</form>
+					</CardContent>
 				</Card>
+
+
 			</div>
 		</div>
 	);

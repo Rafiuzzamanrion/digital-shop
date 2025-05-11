@@ -114,4 +114,30 @@ export const saveSocialLink = async (data: FormData) => {
 		revalidatePath('/aboutUs')
 		revalidatePath('/contactUs')
 	}
+	};
+
+export const saveTin = async (data: FormData) => {
+	const tin = data.get('tin') as string;
+
+	try {
+		await prisma.tinVerification.create({
+			data: {
+		     tin
+			}
+		})
+		return { status: "verification created successfully" };
+	}
+
+
+	catch (error) {
+		return { error: error };
+	}
+	finally {
+		revalidatePath('/adminPanel');
+		revalidatePath('/')
+		revalidatePath('/termsOfService')
+		revalidatePath('/privacy-policy')
+		revalidatePath('/aboutUs')
+		revalidatePath('/contactUs')
+	}
 	}

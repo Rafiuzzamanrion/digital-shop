@@ -3,7 +3,7 @@
 import { PrismaClient } from "@/lib/generated/prisma";
 import {
 	ContactInformationResponse, FacebookVerificationResponse,
-	SocialLinkResponse,
+	SocialLinkResponse, TinResponse,
 	WebsiteInformationResponse
 } from "@/types";
 
@@ -42,6 +42,15 @@ export const getBusinessManagerData = async () : Promise<FacebookVerificationRes
 	try {
 		const facebookVerificationId = await prisma.facebookVerification.findFirst({ orderBy: { createdAt: "desc" } });
 		return facebookVerificationId;
+	} catch (error) {
+		return { error: error };
+	}
+};
+
+export const getTinData = async () : Promise<TinResponse> => {
+	try {
+		const tin = await prisma.tinVerification.findFirst({ orderBy: { createdAt: "desc" } });
+		return tin;
 	} catch (error) {
 		return { error: error };
 	}

@@ -4,13 +4,13 @@ import { FaWhatsapp } from "react-icons/fa";
 import {
 	ContactInformation,
 	ContactInformationResponse,
-	ErrorResponse, SocialLink, SocialLinkResponse,
+	ErrorResponse, SocialLink, SocialLinkResponse, Tin, TinResponse,
 	WebsiteInformation,
 	WebsiteInformationResponse
 } from "@/types";
 import {
 	getContactInformation,
-	getSocialLink,
+	getSocialLink, getTinData,
 	getWebsiteInformation
 } from "@/controllers/getData";
 
@@ -18,7 +18,7 @@ const Footer: React.FC = async () => {
 	const res: ContactInformationResponse = await getContactInformation();
 	const footerRes: WebsiteInformationResponse = await getWebsiteInformation();
 	const socialRes : SocialLinkResponse = await getSocialLink();
-
+	const tinRes: TinResponse = await getTinData();
 	// Type checking for contact info
 	const isError = (res as ErrorResponse)?.error !== undefined;
 	const contactInfo = !isError && res ? (res as ContactInformation) : null;
@@ -31,6 +31,9 @@ const Footer: React.FC = async () => {
 	const isSocialLinkError = (socialRes as ErrorResponse)?.error !== undefined;
 	const socialData = !isSocialLinkError && socialRes ? (socialRes as SocialLink): null;
 
+	// Type checking for tin
+	const isTinError = (tinRes as ErrorResponse)?.error !== undefined;
+	const tinData = !isTinError && tinRes ? (tinRes as Tin): null;
 	return (
 		<footer className="bg-gray-900 text-white">
 			<div className="container mx-auto px-4 py-10">
@@ -90,7 +93,7 @@ const Footer: React.FC = async () => {
 							</li>
 							<li>
 								<a href={`tel:${contactInfo?.contactNumber || '+1234567890'}`} className="hover:text-blue-400 transition-colors font-semibold">
-								TIN: <span className={'text-indigo-600'}>767520992761</span>
+								TIN: <span className={'text-indigo-600'}>{tinData?.tin}</span>
 								</a>
 							</li>
 						</ul>

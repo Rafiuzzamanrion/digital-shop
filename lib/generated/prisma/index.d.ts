@@ -33,6 +33,11 @@ export type WebsiteInformation = $Result.DefaultSelection<Prisma.$WebsiteInforma
  * 
  */
 export type FacebookVerification = $Result.DefaultSelection<Prisma.$FacebookVerificationPayload>
+/**
+ * Model TinVerification
+ * 
+ */
+export type TinVerification = $Result.DefaultSelection<Prisma.$TinVerificationPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +203,16 @@ export class PrismaClient<
     * ```
     */
   get facebookVerification(): Prisma.FacebookVerificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tinVerification`: Exposes CRUD operations for the **TinVerification** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TinVerifications
+    * const tinVerifications = await prisma.tinVerification.findMany()
+    * ```
+    */
+  get tinVerification(): Prisma.TinVerificationDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +656,8 @@ export namespace Prisma {
     ContactInformation: 'ContactInformation',
     SocialLink: 'SocialLink',
     WebsiteInformation: 'WebsiteInformation',
-    FacebookVerification: 'FacebookVerification'
+    FacebookVerification: 'FacebookVerification',
+    TinVerification: 'TinVerification'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "contactInformation" | "socialLink" | "websiteInformation" | "facebookVerification"
+      modelProps: "contactInformation" | "socialLink" | "websiteInformation" | "facebookVerification" | "tinVerification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +976,80 @@ export namespace Prisma {
           }
         }
       }
+      TinVerification: {
+        payload: Prisma.$TinVerificationPayload<ExtArgs>
+        fields: Prisma.TinVerificationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TinVerificationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TinVerificationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload>
+          }
+          findFirst: {
+            args: Prisma.TinVerificationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TinVerificationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload>
+          }
+          findMany: {
+            args: Prisma.TinVerificationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload>[]
+          }
+          create: {
+            args: Prisma.TinVerificationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload>
+          }
+          createMany: {
+            args: Prisma.TinVerificationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TinVerificationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload>[]
+          }
+          delete: {
+            args: Prisma.TinVerificationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload>
+          }
+          update: {
+            args: Prisma.TinVerificationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload>
+          }
+          deleteMany: {
+            args: Prisma.TinVerificationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TinVerificationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TinVerificationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload>[]
+          }
+          upsert: {
+            args: Prisma.TinVerificationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TinVerificationPayload>
+          }
+          aggregate: {
+            args: Prisma.TinVerificationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTinVerification>
+          }
+          groupBy: {
+            args: Prisma.TinVerificationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TinVerificationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TinVerificationCountArgs<ExtArgs>
+            result: $Utils.Optional<TinVerificationCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1138,7 @@ export namespace Prisma {
     socialLink?: SocialLinkOmit
     websiteInformation?: WebsiteInformationOmit
     facebookVerification?: FacebookVerificationOmit
+    tinVerification?: TinVerificationOmit
   }
 
   /* Types for Logging */
@@ -5136,6 +5227,988 @@ export namespace Prisma {
 
 
   /**
+   * Model TinVerification
+   */
+
+  export type AggregateTinVerification = {
+    _count: TinVerificationCountAggregateOutputType | null
+    _min: TinVerificationMinAggregateOutputType | null
+    _max: TinVerificationMaxAggregateOutputType | null
+  }
+
+  export type TinVerificationMinAggregateOutputType = {
+    id: string | null
+    tin: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TinVerificationMaxAggregateOutputType = {
+    id: string | null
+    tin: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TinVerificationCountAggregateOutputType = {
+    id: number
+    tin: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TinVerificationMinAggregateInputType = {
+    id?: true
+    tin?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TinVerificationMaxAggregateInputType = {
+    id?: true
+    tin?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TinVerificationCountAggregateInputType = {
+    id?: true
+    tin?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TinVerificationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TinVerification to aggregate.
+     */
+    where?: TinVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TinVerifications to fetch.
+     */
+    orderBy?: TinVerificationOrderByWithRelationInput | TinVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TinVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TinVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TinVerifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TinVerifications
+    **/
+    _count?: true | TinVerificationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TinVerificationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TinVerificationMaxAggregateInputType
+  }
+
+  export type GetTinVerificationAggregateType<T extends TinVerificationAggregateArgs> = {
+        [P in keyof T & keyof AggregateTinVerification]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTinVerification[P]>
+      : GetScalarType<T[P], AggregateTinVerification[P]>
+  }
+
+
+
+
+  export type TinVerificationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TinVerificationWhereInput
+    orderBy?: TinVerificationOrderByWithAggregationInput | TinVerificationOrderByWithAggregationInput[]
+    by: TinVerificationScalarFieldEnum[] | TinVerificationScalarFieldEnum
+    having?: TinVerificationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TinVerificationCountAggregateInputType | true
+    _min?: TinVerificationMinAggregateInputType
+    _max?: TinVerificationMaxAggregateInputType
+  }
+
+  export type TinVerificationGroupByOutputType = {
+    id: string
+    tin: string
+    createdAt: Date
+    updatedAt: Date
+    _count: TinVerificationCountAggregateOutputType | null
+    _min: TinVerificationMinAggregateOutputType | null
+    _max: TinVerificationMaxAggregateOutputType | null
+  }
+
+  type GetTinVerificationGroupByPayload<T extends TinVerificationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TinVerificationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TinVerificationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TinVerificationGroupByOutputType[P]>
+            : GetScalarType<T[P], TinVerificationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TinVerificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tin?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["tinVerification"]>
+
+  export type TinVerificationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tin?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["tinVerification"]>
+
+  export type TinVerificationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tin?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["tinVerification"]>
+
+  export type TinVerificationSelectScalar = {
+    id?: boolean
+    tin?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TinVerificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tin" | "createdAt" | "updatedAt", ExtArgs["result"]["tinVerification"]>
+
+  export type $TinVerificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TinVerification"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      tin: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["tinVerification"]>
+    composites: {}
+  }
+
+  type TinVerificationGetPayload<S extends boolean | null | undefined | TinVerificationDefaultArgs> = $Result.GetResult<Prisma.$TinVerificationPayload, S>
+
+  type TinVerificationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TinVerificationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TinVerificationCountAggregateInputType | true
+    }
+
+  export interface TinVerificationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TinVerification'], meta: { name: 'TinVerification' } }
+    /**
+     * Find zero or one TinVerification that matches the filter.
+     * @param {TinVerificationFindUniqueArgs} args - Arguments to find a TinVerification
+     * @example
+     * // Get one TinVerification
+     * const tinVerification = await prisma.tinVerification.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TinVerificationFindUniqueArgs>(args: SelectSubset<T, TinVerificationFindUniqueArgs<ExtArgs>>): Prisma__TinVerificationClient<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TinVerification that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TinVerificationFindUniqueOrThrowArgs} args - Arguments to find a TinVerification
+     * @example
+     * // Get one TinVerification
+     * const tinVerification = await prisma.tinVerification.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TinVerificationFindUniqueOrThrowArgs>(args: SelectSubset<T, TinVerificationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TinVerificationClient<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TinVerification that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TinVerificationFindFirstArgs} args - Arguments to find a TinVerification
+     * @example
+     * // Get one TinVerification
+     * const tinVerification = await prisma.tinVerification.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TinVerificationFindFirstArgs>(args?: SelectSubset<T, TinVerificationFindFirstArgs<ExtArgs>>): Prisma__TinVerificationClient<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TinVerification that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TinVerificationFindFirstOrThrowArgs} args - Arguments to find a TinVerification
+     * @example
+     * // Get one TinVerification
+     * const tinVerification = await prisma.tinVerification.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TinVerificationFindFirstOrThrowArgs>(args?: SelectSubset<T, TinVerificationFindFirstOrThrowArgs<ExtArgs>>): Prisma__TinVerificationClient<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TinVerifications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TinVerificationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TinVerifications
+     * const tinVerifications = await prisma.tinVerification.findMany()
+     * 
+     * // Get first 10 TinVerifications
+     * const tinVerifications = await prisma.tinVerification.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tinVerificationWithIdOnly = await prisma.tinVerification.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TinVerificationFindManyArgs>(args?: SelectSubset<T, TinVerificationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TinVerification.
+     * @param {TinVerificationCreateArgs} args - Arguments to create a TinVerification.
+     * @example
+     * // Create one TinVerification
+     * const TinVerification = await prisma.tinVerification.create({
+     *   data: {
+     *     // ... data to create a TinVerification
+     *   }
+     * })
+     * 
+     */
+    create<T extends TinVerificationCreateArgs>(args: SelectSubset<T, TinVerificationCreateArgs<ExtArgs>>): Prisma__TinVerificationClient<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TinVerifications.
+     * @param {TinVerificationCreateManyArgs} args - Arguments to create many TinVerifications.
+     * @example
+     * // Create many TinVerifications
+     * const tinVerification = await prisma.tinVerification.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TinVerificationCreateManyArgs>(args?: SelectSubset<T, TinVerificationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TinVerifications and returns the data saved in the database.
+     * @param {TinVerificationCreateManyAndReturnArgs} args - Arguments to create many TinVerifications.
+     * @example
+     * // Create many TinVerifications
+     * const tinVerification = await prisma.tinVerification.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TinVerifications and only return the `id`
+     * const tinVerificationWithIdOnly = await prisma.tinVerification.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TinVerificationCreateManyAndReturnArgs>(args?: SelectSubset<T, TinVerificationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TinVerification.
+     * @param {TinVerificationDeleteArgs} args - Arguments to delete one TinVerification.
+     * @example
+     * // Delete one TinVerification
+     * const TinVerification = await prisma.tinVerification.delete({
+     *   where: {
+     *     // ... filter to delete one TinVerification
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TinVerificationDeleteArgs>(args: SelectSubset<T, TinVerificationDeleteArgs<ExtArgs>>): Prisma__TinVerificationClient<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TinVerification.
+     * @param {TinVerificationUpdateArgs} args - Arguments to update one TinVerification.
+     * @example
+     * // Update one TinVerification
+     * const tinVerification = await prisma.tinVerification.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TinVerificationUpdateArgs>(args: SelectSubset<T, TinVerificationUpdateArgs<ExtArgs>>): Prisma__TinVerificationClient<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TinVerifications.
+     * @param {TinVerificationDeleteManyArgs} args - Arguments to filter TinVerifications to delete.
+     * @example
+     * // Delete a few TinVerifications
+     * const { count } = await prisma.tinVerification.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TinVerificationDeleteManyArgs>(args?: SelectSubset<T, TinVerificationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TinVerifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TinVerificationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TinVerifications
+     * const tinVerification = await prisma.tinVerification.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TinVerificationUpdateManyArgs>(args: SelectSubset<T, TinVerificationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TinVerifications and returns the data updated in the database.
+     * @param {TinVerificationUpdateManyAndReturnArgs} args - Arguments to update many TinVerifications.
+     * @example
+     * // Update many TinVerifications
+     * const tinVerification = await prisma.tinVerification.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TinVerifications and only return the `id`
+     * const tinVerificationWithIdOnly = await prisma.tinVerification.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TinVerificationUpdateManyAndReturnArgs>(args: SelectSubset<T, TinVerificationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TinVerification.
+     * @param {TinVerificationUpsertArgs} args - Arguments to update or create a TinVerification.
+     * @example
+     * // Update or create a TinVerification
+     * const tinVerification = await prisma.tinVerification.upsert({
+     *   create: {
+     *     // ... data to create a TinVerification
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TinVerification we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TinVerificationUpsertArgs>(args: SelectSubset<T, TinVerificationUpsertArgs<ExtArgs>>): Prisma__TinVerificationClient<$Result.GetResult<Prisma.$TinVerificationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TinVerifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TinVerificationCountArgs} args - Arguments to filter TinVerifications to count.
+     * @example
+     * // Count the number of TinVerifications
+     * const count = await prisma.tinVerification.count({
+     *   where: {
+     *     // ... the filter for the TinVerifications we want to count
+     *   }
+     * })
+    **/
+    count<T extends TinVerificationCountArgs>(
+      args?: Subset<T, TinVerificationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TinVerificationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TinVerification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TinVerificationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TinVerificationAggregateArgs>(args: Subset<T, TinVerificationAggregateArgs>): Prisma.PrismaPromise<GetTinVerificationAggregateType<T>>
+
+    /**
+     * Group by TinVerification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TinVerificationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TinVerificationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TinVerificationGroupByArgs['orderBy'] }
+        : { orderBy?: TinVerificationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TinVerificationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTinVerificationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TinVerification model
+   */
+  readonly fields: TinVerificationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TinVerification.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TinVerificationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TinVerification model
+   */
+  interface TinVerificationFieldRefs {
+    readonly id: FieldRef<"TinVerification", 'String'>
+    readonly tin: FieldRef<"TinVerification", 'String'>
+    readonly createdAt: FieldRef<"TinVerification", 'DateTime'>
+    readonly updatedAt: FieldRef<"TinVerification", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TinVerification findUnique
+   */
+  export type TinVerificationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * Filter, which TinVerification to fetch.
+     */
+    where: TinVerificationWhereUniqueInput
+  }
+
+  /**
+   * TinVerification findUniqueOrThrow
+   */
+  export type TinVerificationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * Filter, which TinVerification to fetch.
+     */
+    where: TinVerificationWhereUniqueInput
+  }
+
+  /**
+   * TinVerification findFirst
+   */
+  export type TinVerificationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * Filter, which TinVerification to fetch.
+     */
+    where?: TinVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TinVerifications to fetch.
+     */
+    orderBy?: TinVerificationOrderByWithRelationInput | TinVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TinVerifications.
+     */
+    cursor?: TinVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TinVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TinVerifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TinVerifications.
+     */
+    distinct?: TinVerificationScalarFieldEnum | TinVerificationScalarFieldEnum[]
+  }
+
+  /**
+   * TinVerification findFirstOrThrow
+   */
+  export type TinVerificationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * Filter, which TinVerification to fetch.
+     */
+    where?: TinVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TinVerifications to fetch.
+     */
+    orderBy?: TinVerificationOrderByWithRelationInput | TinVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TinVerifications.
+     */
+    cursor?: TinVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TinVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TinVerifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TinVerifications.
+     */
+    distinct?: TinVerificationScalarFieldEnum | TinVerificationScalarFieldEnum[]
+  }
+
+  /**
+   * TinVerification findMany
+   */
+  export type TinVerificationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * Filter, which TinVerifications to fetch.
+     */
+    where?: TinVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TinVerifications to fetch.
+     */
+    orderBy?: TinVerificationOrderByWithRelationInput | TinVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TinVerifications.
+     */
+    cursor?: TinVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TinVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TinVerifications.
+     */
+    skip?: number
+    distinct?: TinVerificationScalarFieldEnum | TinVerificationScalarFieldEnum[]
+  }
+
+  /**
+   * TinVerification create
+   */
+  export type TinVerificationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TinVerification.
+     */
+    data: XOR<TinVerificationCreateInput, TinVerificationUncheckedCreateInput>
+  }
+
+  /**
+   * TinVerification createMany
+   */
+  export type TinVerificationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TinVerifications.
+     */
+    data: TinVerificationCreateManyInput | TinVerificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TinVerification createManyAndReturn
+   */
+  export type TinVerificationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * The data used to create many TinVerifications.
+     */
+    data: TinVerificationCreateManyInput | TinVerificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TinVerification update
+   */
+  export type TinVerificationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TinVerification.
+     */
+    data: XOR<TinVerificationUpdateInput, TinVerificationUncheckedUpdateInput>
+    /**
+     * Choose, which TinVerification to update.
+     */
+    where: TinVerificationWhereUniqueInput
+  }
+
+  /**
+   * TinVerification updateMany
+   */
+  export type TinVerificationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TinVerifications.
+     */
+    data: XOR<TinVerificationUpdateManyMutationInput, TinVerificationUncheckedUpdateManyInput>
+    /**
+     * Filter which TinVerifications to update
+     */
+    where?: TinVerificationWhereInput
+    /**
+     * Limit how many TinVerifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TinVerification updateManyAndReturn
+   */
+  export type TinVerificationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * The data used to update TinVerifications.
+     */
+    data: XOR<TinVerificationUpdateManyMutationInput, TinVerificationUncheckedUpdateManyInput>
+    /**
+     * Filter which TinVerifications to update
+     */
+    where?: TinVerificationWhereInput
+    /**
+     * Limit how many TinVerifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TinVerification upsert
+   */
+  export type TinVerificationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TinVerification to update in case it exists.
+     */
+    where: TinVerificationWhereUniqueInput
+    /**
+     * In case the TinVerification found by the `where` argument doesn't exist, create a new TinVerification with this data.
+     */
+    create: XOR<TinVerificationCreateInput, TinVerificationUncheckedCreateInput>
+    /**
+     * In case the TinVerification was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TinVerificationUpdateInput, TinVerificationUncheckedUpdateInput>
+  }
+
+  /**
+   * TinVerification delete
+   */
+  export type TinVerificationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+    /**
+     * Filter which TinVerification to delete.
+     */
+    where: TinVerificationWhereUniqueInput
+  }
+
+  /**
+   * TinVerification deleteMany
+   */
+  export type TinVerificationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TinVerifications to delete
+     */
+    where?: TinVerificationWhereInput
+    /**
+     * Limit how many TinVerifications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TinVerification without action
+   */
+  export type TinVerificationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TinVerification
+     */
+    select?: TinVerificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TinVerification
+     */
+    omit?: TinVerificationOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5192,6 +6265,16 @@ export namespace Prisma {
   };
 
   export type FacebookVerificationScalarFieldEnum = (typeof FacebookVerificationScalarFieldEnum)[keyof typeof FacebookVerificationScalarFieldEnum]
+
+
+  export const TinVerificationScalarFieldEnum: {
+    id: 'id',
+    tin: 'tin',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TinVerificationScalarFieldEnum = (typeof TinVerificationScalarFieldEnum)[keyof typeof TinVerificationScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5473,6 +6556,53 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"FacebookVerification"> | Date | string
   }
 
+  export type TinVerificationWhereInput = {
+    AND?: TinVerificationWhereInput | TinVerificationWhereInput[]
+    OR?: TinVerificationWhereInput[]
+    NOT?: TinVerificationWhereInput | TinVerificationWhereInput[]
+    id?: StringFilter<"TinVerification"> | string
+    tin?: StringFilter<"TinVerification"> | string
+    createdAt?: DateTimeFilter<"TinVerification"> | Date | string
+    updatedAt?: DateTimeFilter<"TinVerification"> | Date | string
+  }
+
+  export type TinVerificationOrderByWithRelationInput = {
+    id?: SortOrder
+    tin?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TinVerificationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TinVerificationWhereInput | TinVerificationWhereInput[]
+    OR?: TinVerificationWhereInput[]
+    NOT?: TinVerificationWhereInput | TinVerificationWhereInput[]
+    tin?: StringFilter<"TinVerification"> | string
+    createdAt?: DateTimeFilter<"TinVerification"> | Date | string
+    updatedAt?: DateTimeFilter<"TinVerification"> | Date | string
+  }, "id">
+
+  export type TinVerificationOrderByWithAggregationInput = {
+    id?: SortOrder
+    tin?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TinVerificationCountOrderByAggregateInput
+    _max?: TinVerificationMaxOrderByAggregateInput
+    _min?: TinVerificationMinOrderByAggregateInput
+  }
+
+  export type TinVerificationScalarWhereWithAggregatesInput = {
+    AND?: TinVerificationScalarWhereWithAggregatesInput | TinVerificationScalarWhereWithAggregatesInput[]
+    OR?: TinVerificationScalarWhereWithAggregatesInput[]
+    NOT?: TinVerificationScalarWhereWithAggregatesInput | TinVerificationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TinVerification"> | string
+    tin?: StringWithAggregatesFilter<"TinVerification"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"TinVerification"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TinVerification"> | Date | string
+  }
+
   export type ContactInformationCreateInput = {
     id?: string
     contactNumber: string
@@ -5704,6 +6834,55 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TinVerificationCreateInput = {
+    id?: string
+    tin: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TinVerificationUncheckedCreateInput = {
+    id?: string
+    tin: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TinVerificationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tin?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TinVerificationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tin?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TinVerificationCreateManyInput = {
+    id?: string
+    tin: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TinVerificationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tin?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TinVerificationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tin?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -5857,6 +7036,27 @@ export namespace Prisma {
   export type FacebookVerificationMinOrderByAggregateInput = {
     id?: SortOrder
     verificationId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TinVerificationCountOrderByAggregateInput = {
+    id?: SortOrder
+    tin?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TinVerificationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tin?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TinVerificationMinOrderByAggregateInput = {
+    id?: SortOrder
+    tin?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
